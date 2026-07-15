@@ -165,3 +165,9 @@ selected and saved for prediction.
 https://credit-card-approval-prediction-ydd5.onrender.com/
 
 📸 Screenshots
+<img width="1920" height="1080" alt="mainpage" src="https://github.com/user-attachments/assets/b15c1014-c50d-451f-ac73-dd0ef522d476" />
+
+<img width="1920" height="1080" alt="home page" src="https://github.com/user-attachments/assets/9dfbe2e2-2666-4781-a3f2-59e88d08cc2f" />
+
+
+
