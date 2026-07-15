@@ -94,3 +94,40 @@ Start the Flask development server:
 python app.py
 ```
 https://credit-card-approval-prediction-ydd5.onrender.com/
+🚀 Installation Steps
+1. Clone Repository
+   git clone https://github.com/USERNAME/credit-card-approval-prediction.git
+2.Move into Project
+cd credit-card-approval-prediction
+3. Create Virtual Environment
+ python -m venv venv
+Windows
+venv\Scripts\activate
+Linux/Mac
+source venv/bin/activate
+4. Install Dependencies 
+ pip install -r requirements.txt
+💡 Usage Instructions
+Train Model
+python train.py
+Start Flask Server
+python app.py
+Open
+https://credit-card-approval-prediction-ydd5.onrender.com/
+🤖 Machine Learning Models Used
+Logistic Regression
+Decision Tree
+Random Forest
+XGBoost
+The model with the highest performance (XGBoost) is automatically
+selected and saved for prediction.
+📊 Performance Results
+Model
+Accuracy
+Logistic Regression 99.20%
+Decision Tree.      99.28%
+Random Forest.      99.80%
+XGBoost.            99.96%
+🌐 Live Demo
+https://credit-card-approval-prediction-ydd5.onrender.com/
+📸 Screenshots
