@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Evaluation Form - Credit Shield AI</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body class="bg-dark text-light overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3 border-bottom border-secondary border-opacity-25 animate-fade-in">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-gradient" href="/">
+                <i class="fa-solid fa-credit-card fs-4 text-primary"></i>
+                <span>CREDIT SHIELD AI</span>
+            </a>
+            <a href="/" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2">
+                <i class="fa-solid fa-house me-1"></i> Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container py-5 my-auto animate-fade-in-up">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <!-- Evaluation Card -->
+                <div class="card glass-card p-4 p-md-5 border border-secondary border-opacity-25 shadow-lg">
+                    
+                    <div class="text-center mb-4">
+                        <div class="bg-primary bg-opacity-10 text-primary d-inline-flex p-3 rounded-circle mb-3">
+                            <i class="fa-solid fa-user-shield fs-3"></i>
+                        </div>
+                        <h2 class="fw-bold mb-1">Applicant Profile</h2>
+                        <p class="text-secondary text-sm">Submit applicant financial metrics for automated underwriting.</p>
+                    </div>
+
+                    <!-- Flash messages for Validation Warnings -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show border border-opacity-50 text-sm bg-opacity-10 d-flex align-items-center gap-2 mb-4" role="alert">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    <div>{{ message }}</div>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Form -->
+                    <form action="/get_prediction" method="POST" class="needs-validation" novalidate>
+                        
+                        <!-- Age Input -->
+                        <div class="mb-4">
+                            <label for="age" class="form-label fw-semibold text-secondary d-flex justify-content-between">
+                                <span>Age of Applicant</span>
+                                <span class="text-xs text-primary">Years</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-glass border-secondary border-opacity-25 text-secondary">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </span>
+                                <input type="number" class="form-control bg-glass border-secondary border-opacity-25 text-light" 
+                                       id="age" name="age" required min="18" max="100" placeholder="e.g. 35">
+                                <div class="invalid-feedback">Applicant must be between 18 and 100 years old.</div>
+                            </div>
+                        </div>
+
+                        <!-- Annual Income Input -->
+                        <div class="mb-4">
+                            <label for="income" class="form-label fw-semibold text-secondary d-flex justify-content-between">
+                                <span>Annual Income</span>
+                                <span class="text-xs text-primary">USD ($)</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-glass border-secondary border-opacity-25 text-secondary">
+                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                </span>
+                                <input type="number" class="form-control bg-glass border-secondary border-opacity-25 text-light" 
+                                       id="income" name="income" required min="0" placeholder="e.g. 75000">
+                                <div class="invalid-feedback">Please enter a valid positive income amount.</div>
+                            </div>
+                        </div>
+
+                        <!-- Current Debt Input -->
+                        <div class="mb-4">
+                            <label for="debt" class="form-label fw-semibold text-secondary d-flex justify-content-between">
+                                <span>Current Outstanding Debt</span>
+                                <span class="text-xs text-primary">USD ($)</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-glass border-secondary border-opacity-25 text-secondary">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </span>
+                                <input type="number" step="any" class="form-control bg-glass border-secondary border-opacity-25 text-light" 
+                                       id="debt" name="debt" required min="0" placeholder="e.g. 2400">
+                                <div class="invalid-feedback">Please enter a valid positive debt amount.</div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Score Input -->
+                        <div class="mb-5">
+                            <label for="credit_score" class="form-label fw-semibold text-secondary d-flex justify-content-between">
+                                <span>Credit Score (FICO range)</span>
+                                <span class="text-xs text-primary">300 - 850</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-glass border-secondary border-opacity-25 text-secondary">
+                                    <i class="fa-solid fa-gauge-high"></i>
+                                </span>
+                                <input type="number" class="form-control bg-glass border-secondary border-opacity-25 text-light" 
+                                       id="credit_score" name="credit_score" required min="300" max="850" placeholder="e.g. 720">
+                                <div class="invalid-feedback">Please enter a FICO score between 300 and 850.</div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-full py-3 rounded-pill fw-bold text-uppercase tracking-wider hover-scale shadow-lg">
+                            Evaluate Profile <i class="fa-solid fa-circle-notch fa-spin ms-2 d-none btn-spinner"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-4 border-top border-secondary border-opacity-10 bg-dark text-center">
+        <div class="container">
+            <p class="text-secondary mb-0 text-xs">
+                &copy; 2026 Credit Shield AI. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
