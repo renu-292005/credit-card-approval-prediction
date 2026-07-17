@@ -181,3 +181,12 @@ https://credit-card-approval-prediction-ydd5.onrender.com/
 🔹 Fraud Detection – Add fraud detection mechanisms to identify suspicious or fake credit card applications.
 
 🔹 Explainable AI (XAI) – Provide clear explanations for approval or rejection decisions, improving transparency and user trust.
+
+
+👤TEAM MEMBERS 
+
+Thota Renuka pallavi (renuthota29@gmail.com) Team Lead
+
+syed yasmin(yasminsyed637@gmail.com) Team member 
+
+sathi Venkata sai akhila(akhilasathi2006@gmail.com) Team member 
