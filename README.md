@@ -185,7 +185,7 @@ https://credit-card-approval-prediction-ydd5.onrender.com/
 
 👤TEAM MEMBERS 
 
-Thota Renuka pallavi (renuthota29@gmail.com) (renu-292005) Team Lead
+Thota Renuka pallavi (renuthota29@gmail.com) https://github.com/renu-292005  Team Lead
 
 syed yasmin(yasminsyed637@gmail.com) Team member 
 
